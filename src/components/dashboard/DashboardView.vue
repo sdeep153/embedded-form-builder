@@ -25,7 +25,6 @@
         :nextStep="nextStep"
         :submitForm="submitForm" 
         :formData="formData"
-        :updateFormData="updateFormData"
         :class="[setContentClass(currentStep)]"
       />
     </div>
@@ -106,11 +105,7 @@ export default {
     },
     submitForm() {
       alert('Form submitted successfully');
-    },
-    updateFormData(key, value) {
-      this.$set(this.formData[key], Object.keys(this.formData[key])[0], value);
-      console.log(this.formData)
-    },
+    }
   },
   components: {
     NavigationBar,  

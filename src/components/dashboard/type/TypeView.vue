@@ -83,10 +83,6 @@ export default {
     },
     continueClicked() {
       if (this.selectedCard !== null) {
-        // // Emit an event to notify the parent component with the selected form type
-        // this.$emit('formTypeSelected', this.selectedCard);
-        // // Pass the selected card number to the updateFormData function
-        // this.updateFormData("formType", this.selectedCard);
         // Call the nextStep method to navigate to the next step
         this.nextStep();
       }

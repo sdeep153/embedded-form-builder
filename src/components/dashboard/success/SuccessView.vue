@@ -27,8 +27,6 @@
 
       <!-- Horizontal Rule -->
       <hr class="my-4 border-gray-300">
-
-
           <!-- Go Back and Continue buttons -->
           <div class="flex justify-end mt-8">
                 <button @click="goToPreviousStep" class="bg-white text-black px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white">
@@ -38,7 +36,6 @@
                   Submit
                 </button>
           </div>
-
         </div>
       </div>
 </template>
