@@ -30,7 +30,7 @@
         <button @click="goToPreviousStep" class="bg-white text-black px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white">
           Go Back
         </button>
-        <button @click="nextStep" class="bg-white text-black px-4 py-2 ml-4 rounded-md hover:bg-blue-600 hover:text-white" v-if="selectedProduct !== null">
+        <button @click="storeData" class="bg-white text-black px-4 py-2 ml-4 rounded-md hover:bg-blue-600 hover:text-white" v-if="selectedProduct !== null">
           Continue
         </button>
       </div>
@@ -47,10 +47,14 @@ export default {
   },
   props: {
     goToPreviousStep: Function,
-    nextStep: Function
+    nextStep: Function,
+    submitForm : Function,
+    formData : Array,
+    updateFormData: Function 
   },
   data() {
     return {
+      localFormData: { ...this.formData },
       products: [
         {
           id: 1,
@@ -107,6 +111,12 @@ export default {
   methods: {
     selectProduct(productId) {
       this.selectedProduct = productId;
+    },
+    storeData(){
+      if(this.selectProduct !== null)
+      this.localFormData.formType = this.selectedProduct
+      this.updateFormData(this.localFormData);
+      this.nextStep()
     }
   }
 }

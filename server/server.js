@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // Middleware to parse JSON data in POST requests
 app.use(bodyParser.json());
+app.use(cors());
 
 // Define a route to handle the POST request
 app.post('/api/save-configuration', (req, res) => {

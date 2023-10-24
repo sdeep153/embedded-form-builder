@@ -59,7 +59,9 @@ export default {
     showBackButton: Boolean,
     showSubmitButton: Boolean,
     nextStep: Function,
-    updateFormData: Function,
+    submitForm : Function,
+    formData : Array,
+    updateFormData: Function 
   },
   data() {
     return {
@@ -73,18 +75,20 @@ export default {
       text3: "Add a form that pops up as a box",
       imageSource3: "./images/img3.png",
       selectedCard: null,
+      localFormData: { ...this.formData },
     };
   },
   methods: {
     cardSelected(cardNumber) {
       this.selectedCard = cardNumber;
-
-      console.log(this.selectedCard); // Ensure that it's the selected card number
     },
     continueClicked() {
       if (this.selectedCard !== null) {
         // Call the nextStep method to navigate to the next step
         this.nextStep();
+        this.localFormData.formType = this.selectedCard
+        this.updateFormData(this.localFormData);
+        // this.submitForm();
       }
     },
   }

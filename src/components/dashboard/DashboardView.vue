@@ -25,6 +25,7 @@
         :nextStep="nextStep"
         :submitForm="submitForm" 
         :formData="formData"
+        :updateFormData="updateFormData"
         :class="[setContentClass(currentStep)]"
       />
     </div>
@@ -42,6 +43,8 @@ import TargetView from './target/TargetView.vue';
 import BehaviourView from './behaviour/BehaviourView.vue';
 import SuccessView from './success/SuccessView.vue';
 
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -55,11 +58,11 @@ export default {
       ],
       currentStep: 0,
       formData: [
-        { formType: {} },
-        { designType: {} },
-        { contentType: {} },
-        { behaviorType: {} },
-        { successType: {} },
+        { formType: null },
+        { designType: null },
+        { contentType: null },
+        { behaviorType: null },
+        { successType:  null},
       ],
     };
   },
@@ -104,7 +107,25 @@ export default {
       }
     },
     submitForm() {
-      alert('Form submitted successfully');
+      // Prepare the data to send
+      const userConfig = {
+        currentStep: this.currentStep,
+        formData: this.formData,
+      };
+
+      // Send the data to the server
+      axios.post('http://localhost:3000/api/save-configuration', userConfig)
+        .then(response => {
+          alert('Form submitted successfully', response);
+        })
+        .catch(error => {
+          console.error('Error submitting the form:', error);
+        });
+    },
+    updateFormData(updatedData) {
+      // Update the original formData in the parent component
+      this.formData = updatedData;
+      console.log(this.formData)
     }
   },
   components: {

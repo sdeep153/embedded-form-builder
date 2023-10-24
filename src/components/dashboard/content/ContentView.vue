@@ -10,7 +10,7 @@
         <button @click="goToPreviousStep" class="bg-white text-black px-4 py-2 mr-2 rounded-md hover:bg-blue-600 hover:text-white">
           Go Back
         </button>
-        <button @click="nextStep" class="bg-white text-black px-4 py-2 ml-2 rounded-md hover:bg-blue-600 hover:text-white">
+        <button @click="storeData" class="bg-white text-black px-4 py-2 ml-2 rounded-md hover:bg-blue-600 hover:text-white">
           Continue
         </button>
       </div>
@@ -39,9 +39,13 @@ export default {
   props: {
     goToPreviousStep: Function,
     nextStep: Function,
+    submitForm : Function,
+    formData : Array,
+    updateFormData: Function 
   },
   data() {
     return {
+      localFormData: { ...this.formData },
       minHeight: '100%',
     };
   },
@@ -64,6 +68,12 @@ export default {
         alert('Exported HTML: ' + data);
       });
     },
+    storeData(){
+      if(this.selectProduct !== null)
+      this.localFormData.formType = this.selectedProduct
+      this.updateFormData(this.localFormData);
+      this.nextStep()
+    }
   },
 };
 </script>

@@ -85,7 +85,7 @@
           <!-- Go Back and Continue buttons -->
           <div class="flex justify-end mt-8">
             <button @click="goToPreviousStep" class="bg-white text-black px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white">Go Back</button>
-            <button @click="nextStep" class="bg-white text-black px-4 py-2 ml-4 rounded-md hover:bg-blue-600 hover:text-white">Continue</button>
+            <button @click="storeData" class="bg-white text-black px-4 py-2 ml-4 rounded-md hover:bg-blue-600 hover:text-white">Continue</button>
           </div>
         </div>
       </div>
@@ -97,10 +97,14 @@
 export default {
   props: {
     goToPreviousStep: Function,
-    nextStep: Function
+    nextStep: Function,
+    submitForm : Function,
+    formData : Array,
+    updateFormData: Function 
   },
   data() {
     return {
+      localFormData: { ...this.formData },
       triggerType: 'enters',
       showFrequency: 'showEveryPage',
       stopShowing: 'stopNever',
@@ -114,6 +118,12 @@ export default {
     toggleAdvanced() {
       this.showAdvanced = !this.showAdvanced;
     },
+    storeData(){
+        if(this.selectProduct !== null)
+        this.localFormData.formType = this.selectedProduct
+        this.updateFormData(this.localFormData);
+        this.nextStep()
+    }
   },
 };
 </script>
