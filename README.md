@@ -23,11 +23,13 @@ To run this Vue application, follow these steps:
     # or
     yarn install
 
-4. Start the development server:
+4. Start the server by going to the server folder : npm install -> npm start (This will make able to read the data filled by the user)
+
+5. Start the development server:
     npm run serve
     # or
     yarn serve
 
-5. Open your web browser and visit http://localhost:8080 to view the application.
+6. Open your web browser and visit http://localhost:8080 to view the application.
 
 
