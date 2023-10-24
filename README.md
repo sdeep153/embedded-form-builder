@@ -23,7 +23,7 @@ To run this Vue application, follow these steps:
     # or
     yarn install
 
-4. Start the server by going to the server folder : npm install -> npm start (This will make able to read the data filled by the user)
+4. Start the server by going to the server folder : npm install -> npm start (This will make us able to read the data filled by the user)
 
 5. Start the development server:
     npm run serve
