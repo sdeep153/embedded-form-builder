@@ -16,7 +16,7 @@ You can access the demo of this application by [clicking here](https://drive.goo
 ## Technology Stack:
 
 - **Frontend:** Vue.js, JavaScript, HTML, CSS
-- **Backend:** Express.js
+- **Backend:** Express.js, Node.js
 
 ## Use Cases:
 
